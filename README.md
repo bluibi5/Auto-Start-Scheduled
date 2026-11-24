@@ -23,9 +23,8 @@ Runs any program at a specific date, time and time zone.
    
    TIME      24-hour HH:MM (16:00 = 4:00 PM)
    
-   TIMEZONE  IANA name, not an abbreviation like PST/EST
-             (e.g. America/Los_Angeles, America/New_York, UTC)
-             Full list: timedatectl list-timezones
+   TIMEZONE  IANA name, not an abbreviation like PST/EST (e.g. America/Los_Angeles, America/New_York, UTC)
+             Full list: `timedatectl list-timezones`
              
    INTERFACE optional. If given, it's passed to the program automatically
              (-i IFACE for most tools, positional for the aircrack-ng suite,
