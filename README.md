@@ -1,6 +1,8 @@
 # Auto-Start-Scheduled.sh
 Runs any program at a specific date, time and time zone.
 
+Disclaimer: This program currently runs successfully in Kali Linux, and has not been tried on other Linux OS. 
+
 ## Usage:
    `sudo ./Auto-Start-Scheduled.sh PROGRAM DATE TIME TIMEZONE [INTERFACE] [-- extra args...]`
 
