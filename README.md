@@ -7,7 +7,7 @@ This script was written to automatically start a tool such as wireshark or airod
 
 ### Download the script & cd into the folder:
 ```
-git clone https://github.com/bluibi5/Auto-Start-Scheduled.sh
+git clone https://github.com/bluibi5/Auto-Start-Scheduled
 cd Auto-Start-Scheduled
 ```
 
