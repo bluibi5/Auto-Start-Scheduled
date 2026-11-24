@@ -1,33 +1,27 @@
 # Auto-Start-Scheduled.sh
-Auto-Start-Scheduled is a vibe-coded script that simply starts a tool at a specified date, time, and timezone. Optionally you can also specify the network interface you would like the tool to use.
+Runs any program at a specific date, time and time zone.
 
-This script was written to automatically start a tool such as wireshark or airodump-ng, but obviously you can schedule just about any tool to run with it.
+## Usage:
+   `sudo ./Auto-Start-Scheduled.sh PROGRAM DATE TIME TIMEZONE [INTERFACE] [-- extra args...]`
 
-## Usage: 
-
-### Download the script & cd into the folder:
+ ## Examples:
+ ```
+   sudo ./Auto-Start-Scheduled.sh wireshark 2026-11-24 09:00 America/New_York wlan0mon
+   sudo ./Auto-Start-Scheduled.sh tcpdump   2026-11-24 16:00 America/Los_Angeles wlan0mon
+   sudo ./Auto-Start-Scheduled.sh airodump-ng 2026-11-24 16:00 UTC wlan0mon
+   sudo ./Auto-Start-Scheduled.sh tshark 2026-11-24 16:00 UTC wlan0mon -- -i {IFACE} -w /root/cap.pcapng
+   sudo ./Auto-Start-Scheduled.sh /root/myscript.sh 2026-11-24 16:00 UTC
 ```
-git clone https://github.com/bluibi5/Auto-Start-Scheduled
-cd Auto-Start-Scheduled
-```
 
-### Change access permissions:
-`chmod +x Auto-Start-Scheduled.sh`
-
-### Run the script: 
-`sudo ./Auto-Start-Scheduled.sh date time time_zone interface`
-
-Date must be in the format year-month-day: example 2026-11-23
-Time must be in 24 hour time with a colon: example 14:00
-Time zone should not have any spaces instead using underscores: example America/Los_Angeles 
-
-The script accepts any time zone name in the IANA database installed on your system (the files under /usr/share/zoneinfo). There are around 600. 
-You can find them with the following commands: 
-```
-timedatectl list-timezones                 # all canonical names
-timedatectl list-timezones | grep -i york  # search for one
-```
-The interface name is optional and defaults to `wlan0mon` where relevant. 
-
-#### Full example script command: 
-`sudo ./Auto-Start-Scheduled.sh 2026-11-23 14:00 America/Los_Angeles wlan0mon`
+   PROGRAM   command name or full path
+   DATE      YYYY-MM-DD
+   TIME      24-hour HH:MM (16:00 = 4:00 PM)
+   TIMEZONE  IANA name, not an abbreviation like PST/EST
+             (e.g. America/Los_Angeles, America/New_York, UTC)
+             Full list: timedatectl list-timezones
+   INTERFACE optional. If given, it's passed to the program automatically
+             (-i IFACE for most tools, positional for the aircrack-ng suite,
+             -c IFACE for kismet).
+   -- args   optional. Everything after "--" is passed to the program exactly
+             as written, and {IFACE} is replaced with INTERFACE. When used,
+             no automatic interface arguments are added.
