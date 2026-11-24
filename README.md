@@ -17,19 +17,19 @@ Runs any program at a specific date, time and time zone.
    `sudo ./Auto-Start-Scheduled.sh /root/myscript.sh 2026-11-24 16:00 UTC`
 
 
-   PROGRAM      command name or full path
+   PROGRAM -      command name or full path
    
-   DATE         YYYY-MM-DD
+   DATE -         YYYY-MM-DD
    
-   TIME         24-hour HH:MM (16:00 = 4:00 PM)
+   TIME -         24-hour HH:MM (16:00 = 4:00 PM)
    
-   TIMEZONE     IANA name, not an abbreviation like PST/EST (e.g. America/Los_Angeles, America/New_York, UTC).  
+   TIMEZONE -     IANA name, not an abbreviation like PST/EST (e.g. America/Los_Angeles, America/New_York, UTC).  
                 Full list: `timedatectl list-timezones`
              
-   INTERFACE    optional. If given, it's passed to the program automatically
+   INTERFACE -    optional. If given, it's passed to the program automatically
                 (-i IFACE for most tools, positional for the aircrack-ng suite,
                 -c IFACE for kismet).
              
-   -- args      optional. Everything after "--" is passed to the program exactly
+   -- args -      optional. Everything after "--" is passed to the program exactly
                 as written, and {IFACE} is replaced with INTERFACE. When used,
                 no automatic interface arguments are added.
